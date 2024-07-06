@@ -1,0 +1,51 @@
+[
+  {
+    "id": 90,
+    "name": "Shoes",
+    "image": "https://i.imgur.com/qNOjJje.jpeg",
+    "creationAt": "2024-07-06T05:37:12.000Z",
+    "updatedAt": "2024-07-06T05:37:12.000Z"
+  },
+  {
+    "id": 91,
+    "name": "Clothes",
+    "image": "https://i.imgur.com/QkIa5tT.jpeg",
+    "creationAt": "2024-07-06T05:37:12.000Z",
+    "updatedAt": "2024-07-06T05:37:12.000Z"
+  },
+  {
+    "id": 92,
+    "name": "Miscellaneous",
+    "image": "https://i.imgur.com/BG8J0Fj.jpg",
+    "creationAt": "2024-07-06T05:37:12.000Z",
+    "updatedAt": "2024-07-06T05:37:12.000Z"
+  },
+  {
+    "id": 93,
+    "name": "Furniture",
+    "image": "https://i.imgur.com/Qphac99.jpeg",
+    "creationAt": "2024-07-06T05:37:12.000Z",
+    "updatedAt": "2024-07-06T05:37:12.000Z"
+  },
+  {
+    "id": 94,
+    "name": "Electronics",
+    "image": "https://i.imgur.com/ZANVnHE.jpeg",
+    "creationAt": "2024-07-06T05:37:12.000Z",
+    "updatedAt": "2024-07-06T05:37:12.000Z"
+  },
+  {
+    "id": 95,
+    "name": "Testing Category",
+    "image": "https://placeimg.com/640/480/any",
+    "creationAt": "2024-07-06T06:01:55.000Z",
+    "updatedAt": "2024-07-06T06:01:55.000Z"
+  },
+  {
+    "id": 96,
+    "name": "Testing Category",
+    "image": "https://placeimg.com/640/480/any",
+    "creationAt": "2024-07-06T06:04:59.000Z",
+    "updatedAt": "2024-07-06T06:04:59.000Z"
+  }
+]
