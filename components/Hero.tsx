@@ -4,7 +4,9 @@ import Image from "next/image";
 import CustomButton from "./CustomButton";
 
 const Hero = () => {
-  const handleScroll = () => {};
+  const handleScroll = () => {
+    document.querySelector("#discover")?.scrollIntoView();
+  };
   return (
     <div className="hero">
       <div className="flex-1 pt-36 padding-x">

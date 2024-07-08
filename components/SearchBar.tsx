@@ -1,10 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import React, { useState } from "react";
 
-import SearchManufacturer from "./SearchManufacturer";
 import { SearchBarProps } from "@/types";
 
 const SearchButton = ({ otherClasses }: { otherClasses: string }) => (
@@ -19,46 +18,37 @@ const SearchButton = ({ otherClasses }: { otherClasses: string }) => (
   </button>
 );
 
-const SearchBar = ({ setManufacturer, setModel }: SearchBarProps) => {
-  const [searchManufacturer, setSearchManufacturer] = useState("");
-  const [searchModel, setSearchModel] = useState("");
+const SearchBar = ({ setTitle: setTitle }: SearchBarProps) => {
+  const [searchTitle, setSearchTitle] = useState("");
 
   const router = useRouter();
 
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (searchManufacturer === "" && searchModel === "") {
+    if (searchTitle === "") {
       return alert("Please provide some input");
     }
 
-    setModel(searchModel);
-    setManufacturer(searchManufacturer);
+    setTitle(searchTitle);
   };
 
   return (
     <form className="searchbar" onSubmit={handleSearch}>
       <div className="searchbar__item">
-        <SearchManufacturer
-          selected={searchManufacturer}
-          setSelected={setSearchManufacturer}
-        />
-        <SearchButton otherClasses="sm:hidden" />
-      </div>
-      <div className="searchbar__item">
         <Image
-          src="/model-icon.png"
+          src="/shop-logo.svg"
           width={25}
           height={25}
           className="absolute w-[20px] h-[20px] ml-4"
-          alt="car model"
+          alt="filter items"
         />
         <input
           type="text"
           name="model"
-          value={searchModel}
-          onChange={(e) => setSearchModel(e.target.value)}
-          placeholder="Tiguan..."
+          value={searchTitle}
+          onChange={(e) => setSearchTitle(e.target.value)}
+          placeholder="filter product title"
           className="searchbar__input"
         />
         <SearchButton otherClasses="sm:hidden" />

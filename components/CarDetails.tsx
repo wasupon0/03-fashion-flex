@@ -1,6 +1,5 @@
 "use client";
 import { CarProps } from "@/types";
-import { generateCarImageUrl } from "@/utils";
 import { Dialog, Transition } from "@headlessui/react";
 import Image from "next/image";
 import { Fragment } from "react";
@@ -20,7 +19,7 @@ const CarDetails = ({ isOpen, closeModal, car }: CarDetailsProps) => {
             as={Fragment}
             enter="ease-out duration-300"
             enterFrom="opacity-0"
-            enterTo="opacticy-100"
+            enterTo="opacity-100"
             leave="ease-in duration-200"
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
@@ -34,7 +33,7 @@ const CarDetails = ({ isOpen, closeModal, car }: CarDetailsProps) => {
                 as={Fragment}
                 enter="ease-out duration-300"
                 enterFrom="opacity-0"
-                enterTo="opacticy-100"
+                enterTo="opacity-100"
                 leave="ease-in duration-200"
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
@@ -57,7 +56,7 @@ const CarDetails = ({ isOpen, closeModal, car }: CarDetailsProps) => {
                   <div className="flex-1 flex flex-col gap-3">
                     <div className="relative w-full h-40 bg-pattern bg-cover bg-center rounded-lg">
                       <Image
-                        src={generateCarImageUrl(car)}
+                        src={`generateCarImageUrl(car)`}
                         alt="car model"
                         fill
                         priority
@@ -68,7 +67,7 @@ const CarDetails = ({ isOpen, closeModal, car }: CarDetailsProps) => {
                     <div className="flex gap-3 ">
                       <div className="flex-1 relative w-full h-24 bg-primary-purple-100 rounded-lg">
                         <Image
-                          src={generateCarImageUrl(car, "29")}
+                          src={`generateCarImageUrl(car, "29")`}
                           alt="car model"
                           fill
                           priority
@@ -77,7 +76,7 @@ const CarDetails = ({ isOpen, closeModal, car }: CarDetailsProps) => {
                       </div>
                       <div className="flex-1 relative w-full h-24 bg-primary-purple-100 rounded-lg">
                         <Image
-                          src={generateCarImageUrl(car, "33")}
+                          src={`generateCarImageUrl(car, "33")`}
                           alt="car model"
                           fill
                           priority
@@ -86,7 +85,7 @@ const CarDetails = ({ isOpen, closeModal, car }: CarDetailsProps) => {
                       </div>
                       <div className="flex-1 relative w-full h-24 bg-primary-purple-100 rounded-lg">
                         <Image
-                          src={generateCarImageUrl(car, "13")}
+                          src={`generateCarImageUrl(car, "13")`}
                           alt="car model"
                           fill
                           priority

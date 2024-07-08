@@ -55,6 +55,29 @@ export const yearsOfProduction = [
   { title: "2024", value: "2024" },
 ];
 
+export const categories = [
+  {
+    id: 1,
+    name: "Clothes",
+  },
+  {
+    id: 2,
+    name: "Electronics",
+  },
+  {
+    id: 3,
+    name: "Furniture",
+  },
+  {
+    id: 4,
+    name: "Shoes",
+  },
+  {
+    id: 5,
+    name: "Miscellaneous",
+  },
+];
+
 export const fuels = [
   {
     title: "Fuel",
@@ -77,7 +100,7 @@ export const footerLinks = [
       { title: "How it works", url: "/" },
       { title: "Featured", url: "/" },
       { title: "Partnership", url: "/" },
-      { title: "Bussiness Relation", url: "/" },
+      { title: "Business Relation", url: "/" },
     ],
   },
   {
