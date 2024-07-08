@@ -99,7 +99,7 @@ export default async function Home() {
         {allProducts.length > 0 ? (
           <section>
             <div className="home__cars-wrapper">
-              {allProducts?.map((car: CarCardProps) => (
+              {allProducts?.map((car) => (
                 <CarCard car={car} />
               ))}
             </div>
