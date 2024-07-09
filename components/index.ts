@@ -6,7 +6,6 @@ import Navbar from "./Navbar";
 import ProductCard from "./ProductCard";
 import ProductDetails from "./ProductDetails";
 import SearchBar from "./SearchBar";
-import SearchManufacturer from "./SearchManufacturer";
 import ShowMore from "./ShowMore";
 
 export {
@@ -18,6 +17,5 @@ export {
   ProductCard,
   ProductDetails,
   SearchBar,
-  SearchManufacturer,
   ShowMore,
 };
