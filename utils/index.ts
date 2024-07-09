@@ -1,5 +1,7 @@
 import { CarProps, FilterProps } from "@/types";
 
+import { getPlaiceholder } from "plaiceholder";
+
 export async function fetchProducts(filters: FilterProps) {
   const { title, priceMin, priceMax, categoryId, limit } = filters;
 
@@ -13,4 +15,24 @@ export async function fetchProducts(filters: FilterProps) {
   console.log(results.length);
 
   return results;
+}
+
+export default async function getBase64(imageUrl: string) {
+  try {
+    const res = await fetch(imageUrl);
+
+    if (!res.ok) {
+      throw new Error("Network response was not ok");
+    }
+
+    const buffer = await res.arrayBuffer();
+
+    const { base64 } = await getPlaiceholder(Buffer.from(buffer));
+
+    console.log(base64);
+
+    return base64;
+  } catch (err) {
+    console.log(err);
+  }
 }

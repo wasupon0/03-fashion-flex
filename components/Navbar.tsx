@@ -12,14 +12,14 @@ const Navbar = () => {
             alt="FashionFlex Logo"
             width={218}
             height={18}
-            className="object-contain"
+            className="w-[14rem] h-[2rem]"
           />
         </Link>
 
         <CustomButton
           title="Sign In"
           btnType="button"
-          containerStyles="text-primary-purple rounded-full bg-white min-w-[130px]"
+          containerStyles="text-primary-purple rounded-full bg-white min-w-[130px] shadow-md"
         />
       </nav>
     </header>

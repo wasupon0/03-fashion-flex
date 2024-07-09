@@ -2,7 +2,7 @@
 import { CarProps } from "@/types";
 import { Dialog, Transition } from "@headlessui/react";
 import Image from "next/image";
-import { Fragment } from "react";
+import { Fragment, useRef } from "react";
 
 interface CarDetailsProps {
   isOpen: boolean;
@@ -11,6 +11,28 @@ interface CarDetailsProps {
 }
 
 const CarDetails = ({ isOpen, closeModal, car }: CarDetailsProps) => {
+  const blurDataURL = "/blur_product.png";
+
+  const isImgValid = useRef(true);
+
+  const urlRegex =
+    /https:\/\/(?:i.imgur.com|placeimg.com|api.escuelajs.co)\/[a-zA-Z0-9/]+(?:\.jpeg|\.jpg|\.png)?/g;
+
+  const imagesURLArray = car.images
+    .map((item) => {
+      const match = item.match(urlRegex);
+      return match ? match[0] : null;
+    })
+    .filter((url) => url !== null);
+
+  car.images.forEach((url) => {
+    if (url.includes("placeimg")) {
+      isImgValid.current = false;
+    } else {
+      isImgValid.current = true;
+    }
+  });
+
   return (
     <>
       <Transition appear show={isOpen} as={Fragment}>
@@ -55,52 +77,99 @@ const CarDetails = ({ isOpen, closeModal, car }: CarDetailsProps) => {
 
                   <div className="flex-1 flex flex-col gap-3">
                     <div className="relative w-full h-40 bg-pattern bg-cover bg-center rounded-lg">
-                      <Image
-                        src={`generateCarImageUrl(car)`}
-                        alt="car model"
-                        fill
-                        priority
-                        className="object-contain"
-                      />
+                      {isImgValid.current ? (
+                        <Image
+                          src={imagesURLArray[0]}
+                          alt="product image"
+                          fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          priority
+                          className="object-contain"
+                          placeholder="blur"
+                          blurDataURL={blurDataURL}
+                        />
+                      ) : (
+                        <Image
+                          src={car.category.image}
+                          alt="category image"
+                          fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          priority
+                          className="object-contain"
+                          placeholder="blur"
+                          blurDataURL={blurDataURL}
+                        />
+                      )}
                     </div>
 
                     <div className="flex gap-3 ">
                       <div className="flex-1 relative w-full h-24 bg-primary-purple-100 rounded-lg">
-                        <Image
-                          src={`generateCarImageUrl(car, "29")`}
-                          alt="car model"
-                          fill
-                          priority
-                          className="object-contain"
-                        />
+                        {isImgValid.current ? (
+                          <Image
+                            src={
+                              imagesURLArray[0 + 1]
+                                ? imagesURLArray[0 + 1]
+                                : imagesURLArray[0]
+                            }
+                            alt="product image"
+                            fill
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            priority
+                            className="object-contain"
+                            placeholder="blur"
+                            blurDataURL={blurDataURL}
+                          />
+                        ) : (
+                          <Image
+                            src={car.category.image}
+                            alt="category image"
+                            fill
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            priority
+                            className="object-contain"
+                            placeholder="blur"
+                            blurDataURL={blurDataURL}
+                          />
+                        )}
                       </div>
                       <div className="flex-1 relative w-full h-24 bg-primary-purple-100 rounded-lg">
-                        <Image
-                          src={`generateCarImageUrl(car, "33")`}
-                          alt="car model"
-                          fill
-                          priority
-                          className="object-contain"
-                        />
-                      </div>
-                      <div className="flex-1 relative w-full h-24 bg-primary-purple-100 rounded-lg">
-                        <Image
-                          src={`generateCarImageUrl(car, "13")`}
-                          alt="car model"
-                          fill
-                          priority
-                          className="object-contain"
-                        />
+                        {isImgValid.current ? (
+                          <Image
+                            src={
+                              imagesURLArray[0 + 2]
+                                ? imagesURLArray[0 + 2]
+                                : imagesURLArray[0]
+                            }
+                            alt="product image"
+                            fill
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            priority
+                            className="object-contain"
+                            placeholder="blur"
+                            blurDataURL={blurDataURL}
+                          />
+                        ) : (
+                          <Image
+                            src={car.category.image}
+                            alt="category image"
+                            fill
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            priority
+                            className="object-contain"
+                            placeholder="blur"
+                            blurDataURL={blurDataURL}
+                          />
+                        )}
                       </div>
                     </div>
                   </div>
                   <div className="flex-1 flex flex-col gap-2">
                     <h2 className="font-semibold text-xl capitalize">
-                      {car.make} {car.model}
+                      {car.title}
                     </h2>
 
                     <div className="mt-3 flex flex-wrap gap-4">
-                      {Object.entries(car).map(([key, value]) => (
+                      {/* {Object.entries(car).map(([key, value]) => (
                         <div
                           className="flex justify-between gap-5 w-full text-right"
                           key={key}
@@ -112,7 +181,8 @@ const CarDetails = ({ isOpen, closeModal, car }: CarDetailsProps) => {
                             {value}
                           </p>
                         </div>
-                      ))}
+                      ))} */}
+                      {car.description}
                     </div>
                   </div>
                 </Dialog.Panel>

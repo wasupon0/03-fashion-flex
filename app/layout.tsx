@@ -1,6 +1,9 @@
 import { Footer, Navbar } from "@/components";
 import type { Metadata } from "next";
+import { Manrope } from "next/font/google";
 import "./globals.css";
+
+const manrope = Manrope({ subsets: ["latin"], preload: false });
 
 export const metadata: Metadata = {
   title: "FashionFlex",
@@ -14,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="relative">
+      <body className={manrope.className}>
         <Navbar />
         {children}
         <Footer />

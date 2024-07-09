@@ -16,19 +16,19 @@ const CarCard = ({ car }: CarCardProps) => {
 
   const [isOpen, setIsOpen] = useState(false);
 
-  // const [isImgValid, setIsImgValid] = useState(true);
+  const blurDataURL = "/blur_product.png";
 
   const isImgValid = useRef(true);
 
-  // const urlRegex =
-  //   /https:\/\/(?:i.imgur.com|placeimg.com)\/[a-zA-Z0-9/]+(?:\.jpeg|\.jpg)?/g;
+  const urlRegex =
+    /https:\/\/(?:i.imgur.com|placeimg.com|api.escuelajs.co)\/[a-zA-Z0-9/]+(?:\.jpeg|\.jpg|\.png)?/g;
 
-  // const imagesURLArray = images
-  //   .map((item) => {
-  //     const match = item.match(urlRegex);
-  //     return match ? match[0] : null;
-  //   })
-  //   .filter((url) => url !== null);
+  const imagesURLArray = images
+    .map((item) => {
+      const match = item.match(urlRegex);
+      return match ? match[0] : null;
+    })
+    .filter((url) => url !== null);
 
   images.forEach((url) => {
     if (url.includes("placeimg")) {
@@ -38,12 +38,13 @@ const CarCard = ({ car }: CarCardProps) => {
     }
   });
 
-  console.log(isImgValid);
-  console.log(images[0]);
+  //console.log(isImgValid);
+  console.log(images);
+
   //console.log(imagesURLArray[0]);
 
   return (
-    <div key={id} className="car-card group">
+    <div className="car-card group">
       <div className="car-card__content">
         <h2 className="car-card__content-title">{title} </h2>
         <span className="flex text-[22px] font-extrabold">
@@ -55,12 +56,14 @@ const CarCard = ({ car }: CarCardProps) => {
       <div className="relative w-full h-40 my-8 object-contain">
         {isImgValid.current ? (
           <Image
-            src={images[0]}
+            src={imagesURLArray[0]}
             alt="product image"
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             priority
-            className="object-contain "
+            className="object-contain"
+            placeholder="blur"
+            blurDataURL={blurDataURL}
           />
         ) : (
           <Image
@@ -70,6 +73,8 @@ const CarCard = ({ car }: CarCardProps) => {
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             priority
             className="object-contain"
+            placeholder="blur"
+            blurDataURL={blurDataURL}
           />
         )}
       </div>

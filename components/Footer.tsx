@@ -12,7 +12,7 @@ const Footer = () => (
           alt="logo"
           width={118}
           height={18}
-          className="object-contain"
+          className="w-[7rem] h-[1rem]"
         />
         <p className="text-base text-gray-700">
           FashionFlex 2024 <br />
