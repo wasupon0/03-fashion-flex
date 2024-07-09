@@ -11,7 +11,8 @@ import { categories, yearsOfProduction } from "@/constants";
 import { FilterProps, HomeProps, ProductProps } from "@/types";
 import { fetchProducts } from "@/utils";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
+import { BeatLoader } from "react-spinners";
 
 interface SearchBarProps {
   searchParams: FilterProps;
@@ -53,6 +54,7 @@ export default async function Home({ searchParams }: SearchBarProps) {
   //   getProducts();
   // }, [categoryId, title, priceMin, priceMax, limit]);
 
+  let isReady = false;
   const allProducts = await fetchProducts({
     title: searchParams.title || "",
     priceMin: searchParams.priceMin || 1,
@@ -61,6 +63,13 @@ export default async function Home({ searchParams }: SearchBarProps) {
     limit: Number(searchParams.limit) || 10,
   });
 
+  if (searchParams.limit === undefined) {
+    isReady = (await allProducts.length) === 10;
+  } else {
+    isReady = (await allProducts.length) >= Number(searchParams.limit) - 10;
+  }
+
+  console.log(isReady);
   console.log(allProducts);
 
   const isDataEmpty =
@@ -104,7 +113,9 @@ export default async function Home({ searchParams }: SearchBarProps) {
           <section>
             <div className="home__cars-wrapper">
               {allProducts?.map((product: ProductProps) => (
-                <ProductCard key={product.id} product={product} />
+                <Suspense fallback={<BeatLoader color="#A02BFF" />}>
+                  <ProductCard key={product.id} product={product} />
+                </Suspense>
               ))}
             </div>
 
@@ -122,7 +133,8 @@ export default async function Home({ searchParams }: SearchBarProps) {
 
             <ShowMore
               pageNumber={(Number(searchParams.limit) || 10) / 10}
-              isNext={(Number(searchParams.limit) || 10) > allProducts.length}
+              isNext={(Number(searchParams.limit) || 10) <= allProducts.length}
+              isReady={isReady}
               //setLimit={setLimit}
             />
           </section>
