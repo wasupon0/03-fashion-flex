@@ -1,16 +1,20 @@
 "use client";
-import { CarProps } from "@/types";
+import { ProductProps } from "@/types";
 import { Dialog, Transition } from "@headlessui/react";
 import Image from "next/image";
 import { Fragment, useRef } from "react";
 
-interface CarDetailsProps {
+interface ProductDetailsProps {
   isOpen: boolean;
   closeModal: () => void;
-  car: CarProps;
+  product: ProductProps;
 }
 
-const CarDetails = ({ isOpen, closeModal, car }: CarDetailsProps) => {
+const ProductDetails = ({
+  isOpen,
+  closeModal,
+  product,
+}: ProductDetailsProps) => {
   const blurDataURL = "/blur_product.png";
 
   const isImgValid = useRef(true);
@@ -18,15 +22,24 @@ const CarDetails = ({ isOpen, closeModal, car }: CarDetailsProps) => {
   const urlRegex =
     /https:\/\/(?:i.imgur.com|placeimg.com|api.escuelajs.co)\/[a-zA-Z0-9/]+(?:\.jpeg|\.jpg|\.png)?/g;
 
-  const imagesURLArray = car.images
+  const imagesURLArray = product.images
     .map((item) => {
       const match = item.match(urlRegex);
       return match ? match[0] : null;
     })
     .filter((url) => url !== null);
 
-  car.images.forEach((url) => {
-    if (url.includes("placeimg")) {
+  product.images.forEach((url) => {
+    if (
+      url.includes("placeimg") ||
+      url.includes("example.com") ||
+      url.includes("https://www.google.com/search?") ||
+      url.includes("unsplash.com") ||
+      url.includes("images.pexels") ||
+      url === "" ||
+      url === null ||
+      url === undefined
+    ) {
       isImgValid.current = false;
     } else {
       isImgValid.current = true;
@@ -90,7 +103,7 @@ const CarDetails = ({ isOpen, closeModal, car }: CarDetailsProps) => {
                         />
                       ) : (
                         <Image
-                          src={car.category.image}
+                          src={product.category.image}
                           alt="category image"
                           fill
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -121,7 +134,7 @@ const CarDetails = ({ isOpen, closeModal, car }: CarDetailsProps) => {
                           />
                         ) : (
                           <Image
-                            src={car.category.image}
+                            src={product.category.image}
                             alt="category image"
                             fill
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -150,7 +163,7 @@ const CarDetails = ({ isOpen, closeModal, car }: CarDetailsProps) => {
                           />
                         ) : (
                           <Image
-                            src={car.category.image}
+                            src={product.category.image}
                             alt="category image"
                             fill
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -165,24 +178,11 @@ const CarDetails = ({ isOpen, closeModal, car }: CarDetailsProps) => {
                   </div>
                   <div className="flex-1 flex flex-col gap-2">
                     <h2 className="font-semibold text-xl capitalize">
-                      {car.title}
+                      {product.title}
                     </h2>
 
                     <div className="mt-3 flex flex-wrap gap-4">
-                      {/* {Object.entries(car).map(([key, value]) => (
-                        <div
-                          className="flex justify-between gap-5 w-full text-right"
-                          key={key}
-                        >
-                          <h4 className="text-grey capitalize">
-                            {key.split("_").join(" ")}
-                          </h4>
-                          <p className="text-black-100 font-semibold">
-                            {value}
-                          </p>
-                        </div>
-                      ))} */}
-                      {car.description}
+                      {product.description}
                     </div>
                   </div>
                 </Dialog.Panel>
@@ -195,4 +195,4 @@ const CarDetails = ({ isOpen, closeModal, car }: CarDetailsProps) => {
   );
 };
 
-export default CarDetails;
+export default ProductDetails;

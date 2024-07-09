@@ -1,19 +1,23 @@
 // "use client";
 
-import { CarCard, CustomFilter, Hero, SearchBar, ShowMore } from "@/components";
+import {
+  CustomFilter,
+  Hero,
+  ProductCard,
+  SearchBar,
+  ShowMore,
+} from "@/components";
 import { categories, yearsOfProduction } from "@/constants";
-import { HomeProps } from "@/types";
+import { FilterProps, HomeProps, ProductProps } from "@/types";
 import { fetchProducts } from "@/utils";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-import { CarProps } from "@/types";
-
-interface CarCardProps {
-  car: CarProps;
+interface SearchBarProps {
+  searchParams: FilterProps;
 }
 
-export default async function Home() {
+export default async function Home({ searchParams }: SearchBarProps) {
   // const [allProducts, setAllProducts] = useState([]);
   // const [loading, setLoading] = useState(false);
 
@@ -50,11 +54,11 @@ export default async function Home() {
   // }, [categoryId, title, priceMin, priceMax, limit]);
 
   const allProducts = await fetchProducts({
-    title: "",
-    priceMin: 1,
-    priceMax: 10000,
-    categoryId: 0,
-    limit: 10,
+    title: searchParams.title || "",
+    priceMin: searchParams.priceMin || 1,
+    priceMax: searchParams.priceMax || 10000,
+    categoryId: searchParams.categoryId || 0,
+    limit: Number(searchParams.limit) || 10,
   });
 
   console.log(allProducts);
@@ -75,14 +79,14 @@ export default async function Home() {
         <div className="home__filters">
           {/* <SearchBar setTitle={setTitle} /> */}
 
-          {/* <SearchBar /> */}
+          <SearchBar />
 
           <div className="home__filter-container">
-            {/* <CustomFilter
-              title="category"
+            <CustomFilter
+              name="categoryId"
               options={categories}
-              setFilter={() => {}}
-            /> */}
+              //setFilter={() => {}}
+            />
             {/* <CustomFilter
               title="year"
               options={yearsOfProduction}
@@ -99,8 +103,8 @@ export default async function Home() {
         {allProducts.length > 0 ? (
           <section>
             <div className="home__cars-wrapper">
-              {allProducts?.map((car: CarProps) => (
-                <CarCard key={car.id} car={car} />
+              {allProducts?.map((product: ProductProps) => (
+                <ProductCard key={product.id} product={product} />
               ))}
             </div>
 
@@ -116,15 +120,23 @@ export default async function Home() {
               </div>
             )} */}
 
-            {/* <ShowMore
-              pageNumber={limit / 10}
-              isNext={limit > allProducts.length}
-              setLimit={setLimit}
-            /> */}
+            <ShowMore
+              pageNumber={(Number(searchParams.limit) || 10) / 10}
+              isNext={(Number(searchParams.limit) || 10) > allProducts.length}
+              //setLimit={setLimit}
+            />
           </section>
         ) : (
           <div className="home__error-container">
             <h2 className="text-black text-xl font-bold">Oops, no results</h2>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
           </div>
         )}
       </div>

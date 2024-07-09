@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
-import { SearchBarProps } from "@/types";
+import { Router } from "next/router";
 
 const SearchButton = ({ otherClasses }: { otherClasses: string }) => (
   <button type="submit" className={`-ml-3 z-10 ${otherClasses}`}>
@@ -18,9 +18,8 @@ const SearchButton = ({ otherClasses }: { otherClasses: string }) => (
   </button>
 );
 
-const SearchBar = ({ setTitle: setTitle }: SearchBarProps) => {
+const SearchBar = () => {
   const [searchTitle, setSearchTitle] = useState("");
-
   const router = useRouter();
 
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
@@ -29,12 +28,28 @@ const SearchBar = ({ setTitle: setTitle }: SearchBarProps) => {
     if (searchTitle === "") {
       return alert("Please provide some input");
     }
+    updateSearchParams(searchTitle.toLowerCase());
 
-    setTitle(searchTitle);
+    //setTitle(searchTitle);
+  };
+
+  const updateSearchParams = (title: string) => {
+    const searchParams = new URLSearchParams(window.location.search);
+    if (title) {
+      searchParams.set("title", title);
+    } else {
+      searchParams.delete("title");
+    }
+
+    const newPathName = `${
+      window.location.pathname
+    }?${searchParams.toString()}`;
+
+    router.push(newPathName, { scroll: false });
   };
 
   return (
-    <form className="searchbar" onSubmit={handleSearch}>
+    <form className="searchbar" id="search_position" onSubmit={handleSearch}>
       <div className="searchbar__item">
         <Image
           src="/shop-logo.svg"
@@ -45,7 +60,7 @@ const SearchBar = ({ setTitle: setTitle }: SearchBarProps) => {
         />
         <input
           type="text"
-          name="model"
+          name="title"
           value={searchTitle}
           onChange={(e) => setSearchTitle(e.target.value)}
           placeholder="filter product title"

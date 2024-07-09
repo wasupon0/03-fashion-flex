@@ -1,23 +1,23 @@
-import Hero from "./Hero";
-import Footer from "./Footer";
-import Navbar from "./Navbar";
 import CustomButton from "./CustomButton";
-import SearchBar from "./SearchBar";
 import CustomFilter from "./CustomFilter";
+import Footer from "./Footer";
+import Hero from "./Hero";
+import Navbar from "./Navbar";
+import ProductCard from "./ProductCard";
+import ProductDetails from "./ProductDetails";
+import SearchBar from "./SearchBar";
 import SearchManufacturer from "./SearchManufacturer";
-import CarCard from "./CarCard";
-import CarDetails from "./CarDetails";
 import ShowMore from "./ShowMore";
 
 export {
-  Hero,
   CustomButton,
-  Footer,
-  Navbar,
-  SearchBar,
   CustomFilter,
+  Footer,
+  Hero,
+  Navbar,
+  ProductCard,
+  ProductDetails,
+  SearchBar,
   SearchManufacturer,
-  CarCard,
-  CarDetails,
   ShowMore,
 };

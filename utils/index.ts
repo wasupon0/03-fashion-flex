@@ -1,11 +1,9 @@
-import { CarProps, FilterProps } from "@/types";
-
-import { getPlaiceholder } from "plaiceholder";
+import { FilterProps, ProductProps } from "@/types";
 
 export async function fetchProducts(filters: FilterProps) {
   const { title, priceMin, priceMax, categoryId, limit } = filters;
 
-  const url = `https://api.escuelajs.co/api/v1/products/?title=${title}&price_min=${priceMin}&price_max=${priceMax}&categoryId=${0}&offset=&limit=${100}`;
+  const url = `https://api.escuelajs.co/api/v1/products/?title=${title}&price_min=${priceMin}&price_max=${priceMax}&categoryId=${categoryId}&offset=&limit=${limit}`;
 
   console.log(url);
   //https://fakeapi.platzi.com/
@@ -17,22 +15,12 @@ export async function fetchProducts(filters: FilterProps) {
   return results;
 }
 
-export default async function getBase64(imageUrl: string) {
-  try {
-    const res = await fetch(imageUrl);
+export const updateSearchParams = (name: string, value: string) => {
+  const searchParams = new URLSearchParams(window.location.search);
 
-    if (!res.ok) {
-      throw new Error("Network response was not ok");
-    }
+  searchParams.set(name, value);
 
-    const buffer = await res.arrayBuffer();
+  const newPathName = `${window.location.pathname}?${searchParams.toString()}`;
 
-    const { base64 } = await getPlaiceholder(Buffer.from(buffer));
-
-    console.log(base64);
-
-    return base64;
-  } catch (err) {
-    console.log(err);
-  }
-}
+  return newPathName;
+};

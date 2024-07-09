@@ -57,24 +57,28 @@ export const yearsOfProduction = [
 
 export const categories = [
   {
-    id: 1,
+    name: "All",
+    value: "0",
+  },
+  {
     name: "Clothes",
+    value: "1",
   },
   {
-    id: 2,
     name: "Electronics",
+    value: "2",
   },
   {
-    id: 3,
     name: "Furniture",
+    value: "3",
   },
   {
-    id: 4,
     name: "Shoes",
+    value: "4",
   },
   {
-    id: 5,
     name: "Miscellaneous",
+    value: "5",
   },
 ];
 

@@ -1,18 +1,17 @@
 "use client";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
-import { CarProps } from "@/types";
-import { CarDetails } from ".";
+import { ProductProps } from "@/types";
+import { ProductDetails } from ".";
 import CustomButton from "./CustomButton";
 
-interface CarCardProps {
-  car: CarProps;
+interface ProductCardProps {
+  product: ProductProps;
 }
 
-const CarCard = ({ car }: CarCardProps) => {
-  //const { city_mpg, year, make, model, transmission, drive } = car;
-  const { id, title, price, description, images, category } = car;
+const ProductCard = ({ product }: ProductCardProps) => {
+  const { id, title, price, description, images, category } = product;
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -31,7 +30,16 @@ const CarCard = ({ car }: CarCardProps) => {
     .filter((url) => url !== null);
 
   images.forEach((url) => {
-    if (url.includes("placeimg")) {
+    if (
+      url.includes("placeimg") ||
+      url.includes("example.com") ||
+      url.includes("https://www.google.com/search?") ||
+      url.includes("unsplash.com") ||
+      url.includes("images.pexels") ||
+      url === "" ||
+      url === null ||
+      url === undefined
+    ) {
       isImgValid.current = false;
     } else {
       isImgValid.current = true;
@@ -39,9 +47,8 @@ const CarCard = ({ car }: CarCardProps) => {
   });
 
   //console.log(isImgValid);
-  console.log(images);
-
-  //console.log(imagesURLArray[0]);
+  //console.log(images);
+  console.log(images[0]);
 
   return (
     <div className="car-card group">
@@ -139,13 +146,13 @@ const CarCard = ({ car }: CarCardProps) => {
           />
         </div>
       </div>
-      <CarDetails
+      <ProductDetails
         isOpen={isOpen}
         closeModal={() => setIsOpen(false)}
-        car={car}
+        product={product}
       />
     </div>
   );
 };
 
-export default CarCard;
+export default ProductCard;
