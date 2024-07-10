@@ -1,7 +1,8 @@
 import { Footer, Navbar } from "@/components";
+import { NextUIProvider } from "@nextui-org/react";
 import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
-import { Suspense } from "react";
+import * as React from "react";
 import "./globals.css";
 
 const manrope = Manrope({ subsets: ["latin"], preload: false });

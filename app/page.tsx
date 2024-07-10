@@ -1,5 +1,3 @@
-// "use client";
-
 import {
   CustomFilter,
   Hero,
@@ -7,58 +5,20 @@ import {
   SearchBar,
   ShowMore,
 } from "@/components";
-import { categories, yearsOfProduction } from "@/constants";
-import { FilterProps, HomeProps, ProductProps } from "@/types";
+import CustomSlider from "@/components/CustomSlider";
+import { categories } from "@/constants";
+import { HomeProps, ProductProps } from "@/types";
 import { fetchProducts } from "@/utils";
-import Image from "next/image";
-import { Suspense, useEffect, useState } from "react";
+import { Suspense } from "react";
 import { BeatLoader } from "react-spinners";
 
-interface SearchBarProps {
-  searchParams: FilterProps;
-}
-
-export default async function Home({ searchParams }: SearchBarProps) {
-  // const [allProducts, setAllProducts] = useState([]);
-  // const [loading, setLoading] = useState(false);
-
-  // const [categoryId, setCategoryId] = useState(0);
-  // const [title, setTitle] = useState("");
-
-  // const [priceMin, setPriceMin] = useState(1);
-  // const [priceMax, setPriceMax] = useState(10000);
-  // const [limit, setLimit] = useState(10);
-
-  // const getProducts = async () => {
-  //   setLoading(true);
-
-  //   try {
-  //     const result = await fetchProducts({
-  //       title: title || "",
-  //       priceMin: priceMin || 1,
-  //       priceMax: priceMax || 10000,
-  //       categoryId: categoryId || 0,
-  //       limit: limit || 10,
-  //     });
-  //     console.log(result);
-  //     setAllProducts(result);
-  //   } catch (error) {
-  //     console.log(error);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   console.log(categoryId, title, priceMin, priceMax, limit);
-  //   getProducts();
-  // }, [categoryId, title, priceMin, priceMax, limit]);
-
+export default async function Home({ searchParams }: HomeProps) {
   let isReady = false;
+
   const allProducts = await fetchProducts({
     title: searchParams.title || "",
-    priceMin: searchParams.priceMin || 1,
-    priceMax: searchParams.priceMax || 10000,
+    price_min: Number(searchParams.price_min) || 10,
+    price_max: Number(searchParams.price_max) || 300,
     categoryId: searchParams.categoryId || 0,
     limit: Number(searchParams.limit) || 10,
   });
@@ -69,11 +29,8 @@ export default async function Home({ searchParams }: SearchBarProps) {
     isReady = (await allProducts.length) >= Number(searchParams.limit) - 10;
   }
 
-  console.log(isReady);
-  console.log(allProducts);
-
-  const isDataEmpty =
-    !Array.isArray(allProducts) || allProducts.length < 1 || !allProducts;
+  console.log(`isReady: ${isReady}`);
+  //console.log(allProducts);
 
   return (
     <main className="overflow-hidden">
@@ -86,16 +43,12 @@ export default async function Home({ searchParams }: SearchBarProps) {
         </div>
 
         <div className="home__filters">
-          {/* <SearchBar setTitle={setTitle} /> */}
-
           <SearchBar />
 
+          <CustomSlider min_name="price_min" max_name="price_max" />
+
           <div className="home__filter-container">
-            <CustomFilter
-              name="categoryId"
-              options={categories}
-              //setFilter={() => {}}
-            />
+            <CustomFilter name="categoryId" options={categories} />
             {/* <CustomFilter
               title="year"
               options={yearsOfProduction}
@@ -112,11 +65,11 @@ export default async function Home({ searchParams }: SearchBarProps) {
         {allProducts.length > 0 ? (
           <section>
             <div className="home__cars-wrapper">
-              {allProducts?.map((product: ProductProps) => (
-                <Suspense fallback={<BeatLoader color="#A02BFF" />}>
+              <Suspense fallback={<BeatLoader color="#A02BFF" />}>
+                {allProducts?.map((product: ProductProps) => (
                   <ProductCard key={product.id} product={product} />
-                </Suspense>
-              ))}
+                ))}
+              </Suspense>
             </div>
 
             {/* {loading && (
@@ -135,7 +88,6 @@ export default async function Home({ searchParams }: SearchBarProps) {
               pageNumber={(Number(searchParams.limit) || 10) / 10}
               isNext={(Number(searchParams.limit) || 10) <= allProducts.length}
               isReady={isReady}
-              //setLimit={setLimit}
             />
           </section>
         ) : (

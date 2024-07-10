@@ -18,8 +18,8 @@ export interface Category {
 
 export interface FilterProps {
   title?: string;
-  priceMin?: number;
-  priceMax?: number;
+  price_min?: number;
+  price_max?: number;
   categoryId?: number;
   limit?: number;
 }
@@ -56,16 +56,15 @@ export interface OptionProps {
 export interface CustomFilterProps {
   name: string;
   options: OptionProps[];
-  //setFilter: (value: any) => void;
+}
+
+export interface CustomSliderProps {
+  min_name: string;
+  max_name: string;
 }
 
 export interface ShowMoreProps {
   pageNumber: number;
   isNext: boolean;
   isReady: boolean;
-  //setLimit: (newLimit: number) => void;
 }
-
-// export interface SearchBarProps {
-//   setTitle: (title: string) => void;
-// }

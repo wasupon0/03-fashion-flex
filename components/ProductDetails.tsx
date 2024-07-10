@@ -3,6 +3,7 @@ import { ProductProps } from "@/types";
 import { Dialog, Transition } from "@headlessui/react";
 import Image from "next/image";
 import { Fragment, useRef } from "react";
+import CustomButton from "./CustomButton";
 
 interface ProductDetailsProps {
   isOpen: boolean;
@@ -33,7 +34,7 @@ const ProductDetails = ({
     if (
       url.includes("placeimg") ||
       url.includes("example.com") ||
-      url.includes("https://www.google.com/search?") ||
+      url.includes("google.com") ||
       url.includes("unsplash.com") ||
       url.includes("images.pexels") ||
       url === "" ||
@@ -45,6 +46,10 @@ const ProductDetails = ({
       isImgValid.current = true;
     }
   });
+
+  const clickBuy = () => {
+    closeModal();
+  };
 
   return (
     <>
@@ -103,7 +108,11 @@ const ProductDetails = ({
                         />
                       ) : (
                         <Image
-                          src={product.category.image}
+                          src={
+                            product.category.image.includes("example.com")
+                              ? "/image-not-available.png"
+                              : product.category.image
+                          }
                           alt="category image"
                           fill
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -134,7 +143,11 @@ const ProductDetails = ({
                           />
                         ) : (
                           <Image
-                            src={product.category.image}
+                            src={
+                              product.category.image.includes("example.com")
+                                ? "/image-not-available.png"
+                                : product.category.image
+                            }
                             alt="category image"
                             fill
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -163,7 +176,11 @@ const ProductDetails = ({
                           />
                         ) : (
                           <Image
-                            src={product.category.image}
+                            src={
+                              product.category.image.includes("example.com")
+                                ? "/image-not-available.png"
+                                : product.category.image
+                            }
                             alt="category image"
                             fill
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -177,13 +194,26 @@ const ProductDetails = ({
                     </div>
                   </div>
                   <div className="flex-1 flex flex-col gap-2">
-                    <h2 className="font-semibold text-xl capitalize">
-                      {product.title}
-                    </h2>
+                    <div className="font-semibold text-xl capitalize flex justify-between">
+                      {product.title}{" "}
+                      <span className="text-[22px] font-extrabold">
+                        <span className="text-xs align-top font-semibold">
+                          $
+                        </span>
+
+                        {product.price}
+                      </span>
+                    </div>
 
                     <div className="mt-3 flex flex-wrap gap-4">
                       {product.description}
                     </div>
+
+                    <CustomButton
+                      title="Buy"
+                      containerStyles="bg-primary-purple text-white rounded-full mt-10 "
+                      handleClick={clickBuy}
+                    />
                   </div>
                 </Dialog.Panel>
               </Transition.Child>

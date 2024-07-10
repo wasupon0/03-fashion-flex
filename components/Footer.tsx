@@ -10,6 +10,7 @@ const Footer = () => (
         <Image
           src="/logo.svg"
           alt="logo"
+          priority
           width={118}
           height={18}
           className="w-[7rem] h-[1rem]"

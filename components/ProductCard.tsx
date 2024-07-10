@@ -33,7 +33,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
     if (
       url.includes("placeimg") ||
       url.includes("example.com") ||
-      url.includes("https://www.google.com/search?") ||
+      url.includes("google.com") ||
       url.includes("unsplash.com") ||
       url.includes("images.pexels") ||
       url === "" ||
@@ -46,16 +46,14 @@ const ProductCard = ({ product }: ProductCardProps) => {
     }
   });
 
-  //console.log(isImgValid);
-  //console.log(images);
   console.log(images[0]);
 
   return (
     <div className="car-card group">
       <div className="car-card__content">
-        <h2 className="car-card__content-title">{title} </h2>
+        <h2 className="car-card__content-title">{title}</h2>
         <span className="flex text-[22px] font-extrabold">
-          <span className="self-start text-[14px] font-semibold">$</span>
+          <span className="text-xs font-semibold">$</span>
           {price}
         </span>
       </div>
@@ -74,7 +72,11 @@ const ProductCard = ({ product }: ProductCardProps) => {
           />
         ) : (
           <Image
-            src={category.image}
+            src={
+              category.image.includes("example.com")
+                ? "/image-not-available.png"
+                : category.image
+            }
             alt="category image"
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -139,7 +141,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
         <div className="car-card__btn-container">
           <CustomButton
             title="view more"
-            containerStyles="w-full py-[16px] rounded-full bg-primary-purple"
+            containerStyles="w-full py-[16px] rounded-full bg-primary-purple "
             textStyles="text-white text-[14px] leading-[17px] font-bold"
             rightIcon="/right-arrow.svg"
             handleClick={() => setIsOpen(true)}

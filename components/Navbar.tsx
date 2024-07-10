@@ -10,17 +10,17 @@ const Navbar = () => {
           <Image
             src="/logo.svg"
             alt="FashionFlex Logo"
+            priority
             width={218}
             height={18}
             className="w-[14rem] h-[2rem]"
           />
         </Link>
-
-        <CustomButton
+        {/* <CustomButton
           title="Sign In"
           btnType="button"
           containerStyles="text-primary-purple rounded-full bg-white min-w-[130px] shadow-md"
-        />
+        /> */}
       </nav>
     </header>
   );

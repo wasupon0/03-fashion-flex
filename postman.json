@@ -585,7 +585,7 @@
                 "body": {
                   "mode": "graphql",
                   "graphql": {
-                    "query": "{\r\n\tproducts(title: \"Generic\", categoryId: 1, price_min: 100, price_max: 1000) {\r\n\t\ttitle\r\n\t\tprice\r\n\t\tcategory {\r\n\t\t\tid\r\n\t\t\tname\r\n\t\t}\r\n\t}\r\n}\r\n",
+                    "query": "{\r\n\tproducts(title: \"Generic\", categoryId: 1, price_min: 100, price_max: 300) {\r\n\t\ttitle\r\n\t\tprice\r\n\t\tcategory {\r\n\t\t\tid\r\n\t\t\tname\r\n\t\t}\r\n\t}\r\n}\r\n",
                     "variables": ""
                   }
                 },

@@ -8,16 +8,12 @@ import { Fragment, useState } from "react";
 import { CustomFilterProps } from "@/types";
 import { updateSearchParams } from "@/utils";
 
-export default function CustomFilter({
-  name,
-  options,
-}: //setFilter,
-CustomFilterProps) {
+export default function CustomFilter({ name, options }: CustomFilterProps) {
   const router = useRouter();
   const [selected, setSelected] = useState(options[0]); // State for storing the selected option
 
   const handleUpdateParams = (e: { name: string; value: string }) => {
-    const newPathName = updateSearchParams(name, e.value);
+    const newPathName = updateSearchParams(name, e.value); // in this case, value is categoryId
 
     router.push(newPathName, { scroll: false });
   };
@@ -28,8 +24,7 @@ CustomFilterProps) {
         value={selected}
         onChange={(e) => {
           setSelected(e); // Update the selected option in state
-          handleUpdateParams(e);
-          //setFilter(e.value); // Update the URL search parameters and navigate to the new URL
+          handleUpdateParams(e); // Update the URL search parameters and navigate to the new URL
         }}
       >
         <div className="relative w-fit z-10">

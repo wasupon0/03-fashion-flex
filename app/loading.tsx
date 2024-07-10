@@ -1,5 +1,6 @@
+import { BeatLoader } from "react-spinners";
+
 const Loading = () => {
-  console.log("loading...");
-  return <div>Loading Page...</div>;
+  return <BeatLoader color="#A02BFF" />;
 };
 export default Loading;

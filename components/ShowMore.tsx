@@ -15,19 +15,18 @@ const ShowMore = ({ pageNumber, isNext, isReady }: ShowMoreProps) => {
     // Calculate the new limit based on the page number and navigation type
     setReady(false);
     const newLimit = (pageNumber + 1) * 10;
-    const newPathName = updateSearchParams("limit", newLimit.toString());
-    router.push(newPathName, { scroll: false });
 
     // Update the "limit" search parameter in the URL with the new value
-    //setLimit(newLimit);
+    const newPathName = updateSearchParams("limit", newLimit.toString());
+    router.push(newPathName, { scroll: false });
   };
 
   useEffect(() => {
-    console.log(isReady);
     setReady(isReady);
-    console.log(isNext);
 
-    console.log(ready);
+    //console.log(isNext);
+    //console.log(isReady);
+    //console.log(ready);
   }, [pageNumber]);
 
   return (
