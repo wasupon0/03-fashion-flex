@@ -46,6 +46,16 @@ const ProductCard = ({ product }: ProductCardProps) => {
     }
   });
 
+  const substrings = ["placeimg", "example", "google", "images.pexels"];
+
+  function categoryImage() {
+    return substrings.some((substring) =>
+      product.category.image.includes(substring)
+    )
+      ? "/image-not-available.png"
+      : product.category.image;
+  }
+
   console.log(images[0]);
 
   return (
@@ -72,11 +82,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
           />
         ) : (
           <Image
-            src={
-              category.image.includes("example.com")
-                ? "/image-not-available.png"
-                : category.image
-            }
+            src={categoryImage()}
             alt="category image"
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

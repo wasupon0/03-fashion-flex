@@ -33,9 +33,9 @@ const ProductDetails = ({
   product.images.forEach((url) => {
     if (
       url.includes("placeimg") ||
-      url.includes("example.com") ||
-      url.includes("google.com") ||
-      url.includes("unsplash.com") ||
+      url.includes("example") ||
+      url.includes("google") ||
+      url.includes("unsplash") ||
       url.includes("images.pexels") ||
       url === "" ||
       url === null ||
@@ -46,6 +46,16 @@ const ProductDetails = ({
       isImgValid.current = true;
     }
   });
+
+  const substrings = ["placeimg", "example", "google", "images.pexels"];
+
+  function categoryImage() {
+    return substrings.some((substring) =>
+      product.category.image.includes(substring)
+    )
+      ? "/image-not-available.png"
+      : product.category.image;
+  }
 
   const clickBuy = () => {
     closeModal();
@@ -108,11 +118,7 @@ const ProductDetails = ({
                         />
                       ) : (
                         <Image
-                          src={
-                            product.category.image.includes("example.com")
-                              ? "/image-not-available.png"
-                              : product.category.image
-                          }
+                          src={categoryImage()}
                           alt="category image"
                           fill
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -143,11 +149,7 @@ const ProductDetails = ({
                           />
                         ) : (
                           <Image
-                            src={
-                              product.category.image.includes("example.com")
-                                ? "/image-not-available.png"
-                                : product.category.image
-                            }
+                            src={categoryImage()}
                             alt="category image"
                             fill
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -176,11 +178,7 @@ const ProductDetails = ({
                           />
                         ) : (
                           <Image
-                            src={
-                              product.category.image.includes("example.com")
-                                ? "/image-not-available.png"
-                                : product.category.image
-                            }
+                            src={categoryImage()}
                             alt="category image"
                             fill
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
