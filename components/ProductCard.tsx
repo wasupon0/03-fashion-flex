@@ -97,7 +97,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
       <div className="relative flex w-full mt-2">
         <div className="flex group-hover:invisible w-full justify-between text-gray">
           <div className="flex justify-center items-center gap-2">
-            {category.name.toLowerCase() === "clothes" ? (
+            {category.id.toString() === "1" ? ( //Clothes
               <Image
                 src="/iconizer-clothes.svg"
                 width={30}
@@ -105,7 +105,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
                 alt="clothes"
               />
             ) : null}
-            {category.name.toLowerCase() === "electronics" ? (
+            {category.id.toString() === "2" ? ( //Electronics
               <Image
                 src="/iconizer-electronics.svg"
                 width={30}
@@ -113,7 +113,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
                 alt="electronics"
               />
             ) : null}
-            {category.name.toLowerCase() === "furniture" ? (
+            {category.id.toString() === "3" ? ( //Furniture
               <Image
                 src="/iconizer-furniture.svg"
                 width={30}
@@ -121,7 +121,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
                 alt="furniture"
               />
             ) : null}
-            {category.name.toLowerCase() === "shoes" ? (
+            {category.id.toString() === "4" ? ( //Shoes
               <Image
                 src="/iconizer-shoes.svg"
                 width={30}
@@ -130,7 +130,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
               />
             ) : null}
 
-            {category.name.toLowerCase() === "miscellaneous" ? (
+            {category.id.toString() === "5" ? ( //Miscellaneous
               <Image
                 src="/iconizer-misc.svg"
                 width={30}
