@@ -1,6 +1,6 @@
 # FashionFlex
 
-## Explore a curated selection of fashion, electronics, furniture, shoes, and more.
+## Explore a selection of fashion, electronics, furniture, shoes, and more.
 
 _Short, one-liner, catchy and easy to understand_
 
