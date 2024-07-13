@@ -4,7 +4,7 @@
 
 _Short, one-liner, catchy and easy to understand_
 
-![Screenshot 1 Hero](./public/hero_cart.png)
+![Screenshot 1 Hero](./public/project-03.png)
 
 ## Contents
 
@@ -34,4 +34,3 @@ _Short, one-liner, catchy and easy to understand_
 https://github.com/user-attachments/assets/446fde20-d1be-45c1-a6d6-cc513d849ca2
 
 github readme does not support html5 video tag
-
