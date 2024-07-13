@@ -1,6 +1,6 @@
 # FashionFlex
 
-## Explore a selection of fashion, electronics, furniture, shoes, and more.
+## Style, Quality, Convenience—All in One Place
 
 _Short, one-liner, catchy and easy to understand_
 
