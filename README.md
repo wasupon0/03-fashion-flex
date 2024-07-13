@@ -31,4 +31,6 @@ _Short, one-liner, catchy and easy to understand_
 <br/>
 <br/>
 
-<video src="https://res.cloudinary.com/for-next-image/video/upload/github-readme/demo_oxn90o.mp4" autoPlay loop muted controls width="100%" />
+https://github.com/user-attachments/assets/446fde20-d1be-45c1-a6d6-cc513d849ca2
+
+
