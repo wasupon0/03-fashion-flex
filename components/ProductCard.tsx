@@ -46,7 +46,13 @@ const ProductCard = ({ product }: ProductCardProps) => {
     }
   });
 
-  const substrings = ["placeimg", "example", "google", "images.pexels"];
+  const substrings = [
+    "placeimg",
+    "example",
+    "google",
+    "images.pexels",
+    "mountain",
+  ];
 
   function categoryImage() {
     return substrings.some((substring) =>
