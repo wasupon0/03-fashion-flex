@@ -23,6 +23,7 @@ _Style, Quality, Convenience—All in One Place_
 <br/>
 <br/>
 
-https://github.com/user-attachments/assets/446fde20-d1be-45c1-a6d6-cc513d849ca2
+https://github.com/user-attachments/assets/c8ed44e5-6997-4421-8fef-3917d335f7b8
 
-github readme does not support html5 video tag
+https://github.com/user-attachments/assets/b35e53bd-0327-4e70-8286-bfcde3e3705e
+
