@@ -2,7 +2,7 @@
 
 _Style, Quality, Convenience—All in One Place_
 
-![Screenshot 1 Hero](./public/project-03.png)
+![Screenshot 1 Hero](./public/readme-img-01.png)
 
 ## Overview and Features
 
@@ -26,4 +26,3 @@ _Style, Quality, Convenience—All in One Place_
 https://github.com/user-attachments/assets/c8ed44e5-6997-4421-8fef-3917d335f7b8
 
 https://github.com/user-attachments/assets/b35e53bd-0327-4e70-8286-bfcde3e3705e
-
