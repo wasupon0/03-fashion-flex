@@ -1,8 +1,6 @@
 # FashionFlex
 
-## Style, Quality, Convenience—All in One Place
-
-_Short, one-liner, catchy and easy to understand_
+_Style, Quality, Convenience—All in One Place_
 
 ![Screenshot 1 Hero](./public/project-03.png)
 
