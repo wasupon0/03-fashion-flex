@@ -16,11 +16,22 @@ FashionFlex, your destination for the latest trends in clothes, electronics, fur
 
 ### Front-End
 
-RentFinder's front-end is built with Next.js, enabling fast, SEO-friendly applications through server-side rendering and static site generation. Tailwind CSS is used for rapid UI development with a clean, maintainable codebase, ensuring a seamless user experience for navigating listings and searching properties.
+#### Next.js
+- Server-Side Rendering (SSR) and Static Site Generation (SSG): Renders pages on the server for faster initial load times and pre-renders pages at build time, enhancing SEO and providing fast load times with improved performance. In FashionFlex, SSR and SSG are used to render product pages, category listings, and populate data efficiently, ensuring a smooth user experience.
+  
+- Real-Time Search Filtering: Leverages Next.js server components to pre-fetch and render data, ensuring immediate response to user queries. In FashionFlex, the useRouter hook is used to update search parameters, allowing users to filter products by name, description, category, and price range with immediate updates, providing an interactive and dynamic shopping experience.
 
-### Back-End
+#### TypeScript
+- Adds static type checking and interfaces.
+- Improves code quality and maintainability by catching errors early.
 
-The back-end of RentFinder leverages Next.js as a full-stack solution, utilizing the App Router for intuitive and scalable page routing and Route Handlers for managing API endpoints efficiently. NextAuth.js is integrated for seamless Google authentication, and middleware functions ensure secure and optimized request processing, enhancing the overall robustness and security of the application.
+#### Styled with Tailwind CSS and Headless UI
+- Headless UI provides components such as dropdown menu for product category that integrate beautifully with Tailwind CSS.
+
+### Public API
+- Leverages Platzi Fake Store API to fetches products, categories, and price information.
+- Allows users to browse and search products by keyword and description.
+- Also provide filters such as category and price range to refine search results.
 <br/><br/>
 
 ## Features
