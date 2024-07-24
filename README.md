@@ -29,6 +29,7 @@ The back-end of RentFinder leverages Next.js as a full-stack solution, utilizing
 
 ![project-03-products](./public/project-03-products.png)
 
+In shopping catalogue, products are organized in cards. In each card contains a product's name, category, price and image. User can click view more to see product description.
 <br/><br/>
 
 https://github.com/user-attachments/assets/c8ed44e5-6997-4421-8fef-3917d335f7b8
