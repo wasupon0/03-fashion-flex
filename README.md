@@ -3,10 +3,12 @@
 _Style, Quality, Convenience—All in One Place_
 <br/><br/>
 ![hero](./public/readme-img-01.png)
+<br/>
 
 ## Overview and Features
 
 FashionFlex, your destination for the latest trends in clothes, electronics, furniture, shoes, and more, all in one place.
+<br/><br/>
 
 ## Tech Stack
 
@@ -19,6 +21,7 @@ RentFinder's front-end is built with Next.js, enabling fast, SEO-friendly applic
 ### Back-End
 
 The back-end of RentFinder leverages Next.js as a full-stack solution, utilizing the App Router for intuitive and scalable page routing and Route Handlers for managing API endpoints efficiently. NextAuth.js is integrated for seamless Google authentication, and middleware functions ensure secure and optimized request processing, enhancing the overall robustness and security of the application.
+<br/><br/>
 
 ## Features
 
@@ -31,6 +34,9 @@ The back-end of RentFinder leverages Next.js as a full-stack solution, utilizing
 https://github.com/user-attachments/assets/c8ed44e5-6997-4421-8fef-3917d335f7b8
 
 The search feature allows you to search for all kind of products by using keywords that match the product's description.
+<br/><br/>
+
+---
 
 ### Filter product Feature
 
