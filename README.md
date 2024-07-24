@@ -25,7 +25,9 @@ The back-end of RentFinder leverages Next.js as a full-stack solution, utilizing
 ### Search Products Feature
 
 ![project-03-products](./public/project-03-products.png)
+
 <br/><br/>
+
 https://github.com/user-attachments/assets/c8ed44e5-6997-4421-8fef-3917d335f7b8
 
 The search feature allows you to search for all kind of products by using keywords that match the product's description.
